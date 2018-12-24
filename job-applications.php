@@ -142,36 +142,42 @@ class wpja_JobApplications
     function wpja_employers_company()
     {
         global $wpdb;
+        $table_employer_company_profiles = $wpdb->prefix . "wpja_employer_company_profiles";
         require_once 'plugin-functions/employers_company_page.php';
     }
 
     function wpja_employers_individual()
     {
         global $wpdb;
+        $table_employer_individual_profiles = $wpdb->prefix . "wpja_employer_individual_profiles";
         require_once 'plugin-functions/employers_individual_page.php';
     }
 
     function wpja_agents_company()
     {
         global $wpdb;
+        $table_agent_company_profiles = $wpdb->prefix . "wpja_agent_company_profiles";
         require_once 'plugin-functions/agents_company_page.php';
     }
 
     function wpja_agents_individual()
     {
         global $wpdb;
+        $table_agent_individual_profiles = $wpdb->prefix . "wpja_agent_individual_profiles";
         require_once 'plugin-functions/agents_individual_page.php';
     }
 
     function wpja_agents_family_member()
     {
         global $wpdb;
+        $table_agent_family_member_profiles = $wpdb->prefix . "wpja_agent_family_member_profiles";
         require_once 'plugin-functions/agents_family_member_page.php';
     }
 
     function wpja_agents_firm()
     {
         global $wpdb;
+        $table_agent_partnership_firm_profiles = $wpdb->prefix . "wpja_agent_partnership_firm_profiles";
         require_once 'plugin-functions/agents_firm_page.php';
     }
 
