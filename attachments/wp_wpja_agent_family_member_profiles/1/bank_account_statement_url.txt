@@ -1,0 +1,10 @@
+Make All Profiles(DONE)
+All Profile Submissions(DONE)
+Attachment submissions
+Work Experiences(DONE)
+Education Courses(DONE)
+Job Preference
+Display Pages
+Backend for Admin
+
+Uncomment profile_id

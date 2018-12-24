@@ -1,0 +1,18 @@
+Problem
+Problem je s èasom, ki ga imamo za malice in kosila, katerega tega ni veliko.
+
+Tarèa
+Spol: moški in ženske
+Starost: 16-50 let
+
+Ideja
+Spletna aplikacija, preko katere bi lahko v naprej naroèil iz njihove ponudbe in plaèal. Potem bi samo prišel in potrdil z doloèeno šifro. 
+
+Rešitev
+Tu je rešitev.
+
+Kanali
+To so kanali.
+
+Prihodki/Odhodki
+To so finance.

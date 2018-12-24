@@ -1,0 +1,19 @@
+Register - 3 types
+-------------------
+Candidate - A form split into 4 tabs, work experience, personal info
+Employer - 2 types(company, individual); Job preference, work experience(if individual), personal info
+Agent - 3 types(company, individual, family_member), personal info
+
+All of them have a profile. They all have multiple tabs.
+Personal	Work Experience 	Job Preference		Attachments
+
+Profile
+--------
+Candidate - can apply for a job and waits for a message that there is someone looking for him
+Employer - can sign up and fill a tab 'Job Preference', 'Work Experience', 'Personal Info' and then waits to get a message that there are 
+	   people that fit his/hers criteria
+Agent - ?
+
+Find Talent
+-----------
+You would still have a page 'Find Talent', where would be limited information about applications and everybody could see it.
