@@ -74,9 +74,8 @@ class wpja_JobApplications
 
     public function wpja_custom_admin_menu()
     {
-        add_menu_page( 'Job Applications', 'Job Applications', 'manage_options', 'hr-setup', array($this, 'wpja_admin_database'), 'dashicons-clipboard');
-	    add_submenu_page( 'hr-setup', 'All Job Applications', 'All Job Applications', 'manage_options', 'hr-setup', array($this, 'wpja_admin_database' ));
-        add_submenu_page( 'hr-setup', 'All Jobseekers', 'All Jobseekers', 'manage_options', 'hr-setup-jobseekers', array($this, 'wpja_jobseekers') );
+        add_menu_page( 'Job Applications', 'Job Applications', 'manage_options', 'hr-setup', array($this, 'wpja_jobseekers'), 'dashicons-clipboard');
+        add_submenu_page( 'hr-setup', 'All Jobseekers', 'All Jobseekers', 'manage_options', 'hr-setup', array($this, 'wpja_jobseekers') );
         add_submenu_page( 'hr-setup', 'All Employers (Company)', 'All Employers (Company)', 'manage_options', 'hr-setup-employers-company', array($this, 'wpja_employers_company') );
         add_submenu_page( 'hr-setup', 'All Employers (Individual)', 'All Employers (Individual)', 'manage_options', 'hr-setup-employers-individual', array($this, 'wpja_employers_individual') );
         add_submenu_page( 'hr-setup', 'All Agents (Company)', 'All Agents (Company)', 'manage_options', 'hr-setup-agents-company', array($this, 'wpja_agents_company') );
