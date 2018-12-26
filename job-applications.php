@@ -135,6 +135,8 @@ class wpja_JobApplications
     {
         global $wpdb;
         $table_jobseeker_profiles = $wpdb->prefix . "wpja_jobseeker_profiles";
+        $table_countries = $wpdb->prefix . "wpja_countries";
+        $table_education_levels = $wpdb->prefix . "wpja_education_levels";
         require_once 'plugin-functions/jobseekers_page.php';
     }
 
@@ -142,6 +144,7 @@ class wpja_JobApplications
     {
         global $wpdb;
         $table_employer_company_profiles = $wpdb->prefix . "wpja_employer_company_profiles";
+        $table_countries = $wpdb->prefix . "wpja_countries";
         require_once 'plugin-functions/employers_company_page.php';
     }
 
@@ -149,6 +152,7 @@ class wpja_JobApplications
     {
         global $wpdb;
         $table_employer_individual_profiles = $wpdb->prefix . "wpja_employer_individual_profiles";
+        $table_countries = $wpdb->prefix . "wpja_countries";
         require_once 'plugin-functions/employers_individual_page.php';
     }
 
