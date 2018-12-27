@@ -52,6 +52,9 @@ class wpja_JobApplications
         add_shortcode('job_application_signup', array($this, 'wpja_signup'));
         add_shortcode('job_application_login', array($this, 'wpja_login'));
         add_shortcode('job_application_profile', array($this, 'wpja_profile_determination'));
+        add_shortcode('job_application_agent_add_jobseeker', array($this, 'wpja_agents_add_jobseeker'));
+        add_shortcode('job_application_show_jobseekers', array($this, 'wpja_show_jobseekers'));
+        add_shortcode('job_application_show_employers', array($this, 'wpja_show_employers'));
     }
 
     function wpja_activate()
@@ -182,6 +185,32 @@ class wpja_JobApplications
         global $wpdb;
         $table_agent_partnership_firm_profiles = $wpdb->prefix . "wpja_agent_partnership_firm_profiles";
         require_once 'plugin-functions/agents_firm_page.php';
+    }
+
+    function wpja_agents_add_jobseeker()
+    {
+        global $wpdb;
+        $table_jobseeker_profiles = $wpdb->prefix . "wpja_jobseeker_profiles";
+        $table_countries = $wpdb->prefix . "wpja_countries";
+        $table_education_levels = $wpdb->prefix . "wpja_education_levels";
+        require_once 'frontend_files/agents_add_jobseeker.php';
+    }
+
+    function wpja_show_jobseekers()
+    {
+        global $wpdb;
+        $table_jobseeker_profiles = $wpdb->prefix . "wpja_jobseeker_profiles";
+        $table_countries = $wpdb->prefix . "wpja_countries";
+        $table_education_levels = $wpdb->prefix . "wpja_education_levels";
+        require_once 'frontend_files/show_jobseekers.php';
+    }
+
+    function wpja_show_employers()
+    {
+        global $wpdb;
+        $table_employer_company_profiles = $wpdb->prefix . "wpja_employer_company_profiles";
+        $table_employer_individual_profiles = $wpdb->prefix . "wpja_employer_individual_profiles";
+        require_once 'frontend_files/show_employers.php';
     }
 
     function wpja_table_all()

@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 echo '<table>
 <thead>
 <td>ID</td>
