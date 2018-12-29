@@ -1,7 +1,7 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-$sql = "SELECT * FROM $table_applications ORDER BY surname, name";
+$sql = "SELECT * FROM $table_jobseeker_profiles ORDER BY surname, name";
 $result = $wpdb->get_results($sql, ARRAY_A);
 $count = $wpdb->num_rows;
 if ($count < 0)
@@ -9,65 +9,46 @@ if ($count < 0)
   exit;
 }
 
-$name = "";
-
-echo "<table id=\"database\" style=\"table-layout: auto;\">";
-echo "<thead>";
-echo "<td>ID</td>";
-echo "<td>NAME</td>";
-echo "<td>SURNAME</td>";
-echo "<td>GENDER</td>";
-echo "<td>COUNTRY OF ORIGIN</td>";
-echo "<td>PASSPORT</td>";
-echo "<td>EDUCATION</td>";
-echo "<td>POSITION</td>";
-echo "<td>YRS EXP</td>";
-echo "</thead>";
-echo "<tbody>";
+$string = "<table id=\"database\" style=\"table-layout: auto;\">";
+$string .= "<thead>";
+$string .= "<td>ID</td>";
+$string .= "<td>NAME</td>";
+$string .= "<td>SURNAME</td>";
+$string .= "<td>GENDER</td>";
+$string .= "<td>COUNTRY OF ORIGIN</td>";
+$string .= "<td>PASSPORT</td>";
+$string .= "<td>EDUCATION</td>";
+$string .= "</thead>";
+$string .= "<tbody>";
 foreach($result as $row)
 {
-	if(isset($row['position_id']))
-	{
-		$sql1 = "SELECT name FROM $table_positions WHERE id= %d";
-		$result1 = $wpdb->get_results($wpdb->prepare($sql1, $row['position_id']), ARRAY_A);
-		foreach($result1 as $row1)
-		{
-			$name = $row1['name'];
-		}
-	}
-	else if(isset($row['position_other']))
-	{
-		$name = $row['position_other'];
-	}
-	if (isset($row['education']))
+	if (isset($row['education_level_id']))
 	{
 		$sql2 = "SELECT name FROM $table_education_levels WHERE id= %d";
-		$result2 = $wpdb->get_results($wpdb->prepare($sql2, $row['education']), ARRAY_A);
+		$result2 = $wpdb->get_results($wpdb->prepare($sql2, $row['education_level_id']), ARRAY_A);
 		foreach($result2 as $row2)
 		{
             $education = $row2['name'];
         }
 	}
-	if (isset ($row['country_origin']))
+	if (isset ($row['country_origin_id']))
 	{
 		$sql3 = "SELECT country_name FROM $table_countries WHERE id= %d";
-		$result3 = $wpdb->get_results($wpdb->prepare($sql3, $row['country_origin']), ARRAY_A);
+		$result3 = $wpdb->get_results($wpdb->prepare($sql3, $row['country_origin_id']), ARRAY_A);
 		foreach($result3 as $row3)
 		{
             $country_origin = $row3['country_name'];
         }
 	}
-	echo "<tr>";
-	echo "<td>".esc_html($row['id'])."</td>";
-	echo "<td>".esc_html($row['name'])."</td>";
-	echo "<td>".esc_html($row['surname'])."</td>";
-	echo "<td>".esc_html($row['gender'])."</td>";
-	echo "<td>".esc_html($country_origin)."</td>";
-	echo "<td>".esc_html($row['passport_number'])."</td>";
-	echo "<td>".esc_html($education)."</td>";
-	echo "<td>".esc_html(strtoupper($name))."</td>";
-	echo "<td>".esc_html($row['xp'])."</td>";
-	echo "</tr>";
+	$string .= "<tr>";
+	$string .= "<td>".esc_html($row['id'])."</td>";
+	$string .= "<td>".esc_html($row['name'])."</td>";
+	$string .= "<td>".esc_html($row['surname'])."</td>";
+	$string .= "<td>".esc_html($row['gender'])."</td>";
+	$string .= "<td>".esc_html($country_origin)."</td>";
+	$string .= "<td>".esc_html($row['passport_number'])."</td>";
+	$string .= "<td>".esc_html($education)."</td>";
+	$string .= "</tr>";
 }
-echo "</tbody>";
-echo "</table>";
+$string .= "</tbody>";
+$string .= "</table>";

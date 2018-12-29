@@ -48,7 +48,6 @@ class wpja_JobApplications
         add_action('admin_post_submit-login', array($this, 'wpja_login_submit'));
         add_shortcode('job_application_form', array($this, 'wpja_application_form'));
         add_shortcode('job_application_table_all', array($this, 'wpja_table_all'));
-        add_shortcode('job_application_table_single', array($this, 'wpja_table_single'));
         add_shortcode('job_application_signup', array($this, 'wpja_signup'));
         add_shortcode('job_application_login', array($this, 'wpja_login'));
         add_shortcode('job_application_profile', array($this, 'wpja_profile_determination'));
@@ -194,6 +193,7 @@ class wpja_JobApplications
         $table_countries = $wpdb->prefix . "wpja_countries";
         $table_education_levels = $wpdb->prefix . "wpja_education_levels";
         require_once 'frontend_files/agents_add_jobseeker.php';
+        return $string;
     }
 
     function wpja_show_jobseekers()
@@ -203,6 +203,7 @@ class wpja_JobApplications
         $table_countries = $wpdb->prefix . "wpja_countries";
         $table_education_levels = $wpdb->prefix . "wpja_education_levels";
         require_once 'frontend_files/show_jobseekers.php';
+        return $string;
     }
 
     function wpja_show_employers()
@@ -210,17 +211,19 @@ class wpja_JobApplications
         global $wpdb;
         $table_employer_company_profiles = $wpdb->prefix . "wpja_employer_company_profiles";
         $table_employer_individual_profiles = $wpdb->prefix . "wpja_employer_individual_profiles";
+        $table_countries = $wpdb->prefix . "wpja_countries";
         require_once 'frontend_files/show_employers.php';
+        return $string;
     }
 
     function wpja_table_all()
     {
         global $wpdb;
-        $table_applications = $wpdb->prefix . "job_applications";
-        $table_positions = $wpdb->prefix . "job_applications_positions";
-        $table_education_levels = $wpdb->prefix . "job_applications_education_levels";
-        $table_countries = $wpdb->prefix . "job_applications_countries";
+        $table_jobseeker_profiles = $wpdb->prefix . "wpja_jobseeker_profiles";
+        $table_education_levels = $wpdb->prefix . "wpja_education_levels";
+        $table_countries = $wpdb->prefix . "wpja_countries";
         require_once 'frontend_files/table_all.php';
+        return $string;
     }
     function wpja_table_single($id = 0)
     {
