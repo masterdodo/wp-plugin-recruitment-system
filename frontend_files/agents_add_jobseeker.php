@@ -1,13 +1,19 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
+$table_jobseeker_profiles = $wpdb->prefix . "wpja_jobseeker_profiles";
+$table_vehicles = $wpdb->prefix . "wpja_vehicles";
+$table_countries = $wpdb->prefix . "wpja_countries";
+$table_education_levels = $wpdb->prefix . "wpja_education_levels";
 if(isset($_POST['submit-agent-add-jobseeker']))
 {
     require_once 'agent_add_jobseeker.php';
+    return $string;
     exit;
 }
 if(isset($_POST['submit-agent-edit-jobseeker']))
 {
     require_once 'agent_edit_jobseeker.php';
+    return $string;
     exit;
 }
 if(isset($_POST['submit-agent-remove-jobseeker']))
@@ -29,7 +35,7 @@ if ($count < 0)
   exit;
 }
 
-$string .= '<table>
+$string .= '<div class="wpja-table-responsive" style="width: 100%; overflow-y: auto; _overflow: auto; margin: 0 0 1em;"><table>
            <thead>
            <td>NAME</td>
            <td>SURNAME</td>
@@ -45,6 +51,7 @@ $string .= '<table>
            <tbody>';
 foreach($result as $row)
 {
+    $education = '/';
     if (isset($row['education_level_id']))
     {
         $sql2 = "SELECT name FROM $table_education_levels WHERE id= %d";
@@ -54,6 +61,7 @@ foreach($result as $row)
             $education = $row2['name'];
         }
     }
+    $country = '/';
     if (isset ($row['country_id']))
     {
         $sql3 = "SELECT country_name FROM $table_countries WHERE id= %d";
@@ -73,9 +81,9 @@ foreach($result as $row)
     $string .= "<td>".esc_html($country)."</td>";
     $string .= "<td>".esc_html(date('d. m. Y', $dob))."</td>";
     $string .= "<td>".esc_html($education)."</td>";
-    $string .= "<td>EDIT</td>";
-    $string .= "<td>REMOVE</td>";
+    $string .= '<td><form method="POST"><input type="hidden" name="profile_id" value="'. $row['id'] .'"><button type="submit" name="submit-agent-edit-jobseeker">EDIT</button></form></td>';
+    $string .= '<td><form method="POST"><input type="hidden" name="profile_id" value="'. $row['id'] .'"><button type="submit" name="submit-agent-remove-jobseeker">REMOVE</button></form></td>';
     $string .= "</tr>";
 }
 $string .= '</tbody>
-            </table>';
+            </table></div>';

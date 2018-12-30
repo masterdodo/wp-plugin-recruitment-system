@@ -35,6 +35,7 @@ if(isset($_POST['submit-jobseeker']))
     {
         $email = wpja_sanitize_check($_POST['email']);
     }
+    $gender = '';
     if(isset($_POST['gender']))
     {
         $gender = wpja_sanitize_check($_POST['gender']);
@@ -91,10 +92,25 @@ if(isset($_POST['submit-jobseeker']))
     global $wpdb;
     $user_id = get_current_user_id();
     $prepare_vars = array($name, $surname, $passport_number, $email, $gender, $address, $town, $postcode, $country_id, $country_origin_id, $tel_land_line, $tel_mobile, $date_of_birth, $education_level_id);
-    $sql_profile = "UPDATE $table_jobseeker_profiles SET name = %s,surname = %s,passport_number = %s,email = %s,gender = %s,address = %s,town = %s,postcode = %s,country_id = %d,country_origin_id = %d,tel_land_line = %s,tel_mobile = %s,date_of_birth = %s,education_level_id = %d WHERE user_id = $user_id";
+    if(isset($_POST['profile_id']))
+    {
+        $sql_profile = "UPDATE $table_jobseeker_profiles SET name = %s,surname = %s,passport_number = %s,email = %s,gender = %s,address = %s,town = %s,postcode = %s,country_id = %d,country_origin_id = %d,tel_land_line = %s,tel_mobile = %s,date_of_birth = %s,education_level_id = %d WHERE id = " . $_POST['profile_id'];
+    }
+    else
+    {
+        $sql_profile = "UPDATE $table_jobseeker_profiles SET name = %s,surname = %s,passport_number = %s,email = %s,gender = %s,address = %s,town = %s,postcode = %s,country_id = %d,country_origin_id = %d,tel_land_line = %s,tel_mobile = %s,date_of_birth = %s,education_level_id = %d WHERE user_id = $user_id";
+    }
     $result_profile = $wpdb->query( $wpdb->prepare( $sql_profile, $prepare_vars ) );
-    $profile_id = $wpdb->get_row( $wpdb->prepare( "SELECT id FROM $table_jobseeker_profiles WHERE user_id = %d", $user_id ) );
-    $profile_id = $profile_id->id;
+    if(isset($_POST['profile_id']))
+    {
+        $profile_id = $wpdb->get_row( $wpdb->prepare( "SELECT id FROM $table_jobseeker_profiles WHERE id = %d", $_POST['profile_id'] ) );
+        $profile_id = $profile_id->id;
+    }
+    else
+    {
+        $profile_id = $wpdb->get_row( $wpdb->prepare( "SELECT id FROM $table_jobseeker_profiles WHERE user_id = %d", $user_id ) );
+        $profile_id = $profile_id->id;
+    }
 
         for($count = 0; $count < 16; $count++)
         {

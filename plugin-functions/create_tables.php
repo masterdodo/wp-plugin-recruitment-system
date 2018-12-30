@@ -67,7 +67,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
         work_certificate2_url text,
         work_certificate3_url text,
         police_conduct_url text,
-        user_id int UNIQUE,
+        user_id int DEFAULT NULL,
         agent_id int DEFAULT NULL,
         PRIMARY KEY  (id)
     ) $charset_collate;";
