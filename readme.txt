@@ -1,5 +1,5 @@
 === Job Applications ===
-Contributors: davidarist
+Contributors: DA
 Tags: plugins
 Requires at least: 3.0.1
 Tested up to: 4.9.8
