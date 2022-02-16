@@ -7,8 +7,7 @@ Plugin name: Job Applications
 Plugin URI: https://github.com/masterdodo/wp-plugin-job-applications
 Description: This is a plugin that allows you to manage job applications.
 Version: 1.0
-Author: David Aristovnik
-Author URI: https://aristovnik.com
+Author: DA
 Licence: GPLv3 or later
 Text domain: wp-plugin-job-applications
 */
@@ -27,7 +26,7 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-Copyright (C) 2018  David Aristovnik
+Copyright (C) 2018  DA
 */
 
 defined('ABSPATH') or die('You don\t have access to this file!');
